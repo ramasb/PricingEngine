@@ -28,9 +28,17 @@ public class DiscountEngine {
 	 */
 	private void loadDiscountRules() {
 		discountRules = new CopyOnWriteArrayList<DiscountDetail>();
+		// If Supply is High and Demand is High, Product is sold at same price as chosen
+		// price.
 		discountRules.add(new DiscountDetail(DiscountDetail.HIGH, DiscountDetail.HIGH, 0.0));
+		// If Supply is Low and Demand is Low, Product is sold at 10 % more than chosen
+		// price.
 		discountRules.add(new DiscountDetail(DiscountDetail.LOW, DiscountDetail.LOW, 0.1));
+		// If Supply is Low and Demand is High, Product is sold at 5 % more than chosen
+		// price.
 		discountRules.add(new DiscountDetail(DiscountDetail.LOW, DiscountDetail.HIGH, 0.05));
+		// If Supply is High and Demand is Low, Product is sold at 5 % less than chosen
+		// price.
 		discountRules.add(new DiscountDetail(DiscountDetail.HIGH, DiscountDetail.LOW, -0.05));
 	}
 
